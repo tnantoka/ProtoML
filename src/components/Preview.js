@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 import YAMLParser from '../utils/YAMLParser.js';
 
@@ -56,6 +56,11 @@ export default class Preview extends React.Component {
           ))}
         </View>
       );
+    }
+    if (this.state.parser.error) {
+      return (
+        <Text style={{ color: 'red' }}>{ this.state.parser.error.toString() }</Text>
+      )
     }
     return this.state.parser.screens[this.state.currentScreen];
   }

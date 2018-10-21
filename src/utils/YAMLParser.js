@@ -95,11 +95,13 @@ export default class YAMLParser {
 
   setSource(source) {
     this.source = source;
+    this.error = null;
 
     let doc;
     try {
       doc = yaml.load(source, { schema: DEFAULT_SAFE_SCHEMA });
     } catch (e) {
+      this.error = e;
       console.error(e);
       doc = {};
     }
