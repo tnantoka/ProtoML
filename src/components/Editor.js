@@ -64,9 +64,11 @@ export default class Editor extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Navbar color="light" light expand>
+        <Navbar light expand className="border-bottom">
           <Container fluid>
-            <NavbarBrand href="/">ProtoML</NavbarBrand>
+            <NavbarBrand href="/">
+              <img src="/icon-64.png" width="30" height="30" alt="" />
+            </NavbarBrand>
             <Nav className="ml-auto" navbar>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav className="py-0">
@@ -94,7 +96,7 @@ export default class Editor extends React.Component {
         <Container fluid className="app-container">
           <Row className="app-row">
             <Col className="app-col" sm="6">
-              <Card>
+              <Card className="rounded-0">
                 <CardBody className="p-0" style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <AceEditor
                     mode="yaml"
@@ -109,8 +111,8 @@ export default class Editor extends React.Component {
               </Card>
             </Col>
             <Col className="app-col" sm="6">
-              <Card>
-                <CardBody style={{ display: 'flex', flexDirection: 'column' }}>
+              <Card className="border-0">
+                <CardBody className="p-0" style={{ display: 'flex', flexDirection: 'column' }}>
                   <View style={{ flex: 1, borderWidth: 1, borderColor: 'lightgrey' }}>
                     <Preview source={this.state.source} />
                   </View>

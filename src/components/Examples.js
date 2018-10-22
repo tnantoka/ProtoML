@@ -11,8 +11,8 @@ export default class Exmaples extends React.Component {
       <View style={styles.container}>
         {Object.keys(EXAMPLE_SOURCES).map(key => {
           return (
-            <Card key={key} className="mb-3">
-              <CardHeader tag="h5">{key}</CardHeader>
+            <Card key={key} className="mb-3 rounded-0">
+              <CardHeader tag="h5" className="bg-white">{key}</CardHeader>
               <CardBody>
                 <Row>
                   <Col>
