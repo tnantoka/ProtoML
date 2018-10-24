@@ -79,6 +79,23 @@ example:
 
   `.trim(),
 
+  Comment: `
+example:
+  root: true
+  children:
+    - style:
+        borderWidth: 1
+        borderColor: grey
+      comment: |
+        This is the comment.
+        (Multiline)
+      children:
+        - style:
+            backgroundColor: lightgrey
+            height: 20
+  `.trim(),
+
+
   Alias: `
 _hr: &hr
   style:

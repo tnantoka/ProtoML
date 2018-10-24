@@ -4,6 +4,8 @@ import { View, Text, TouchableOpacity, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import _ from 'lodash';
 
+import Comment from '../components/Comment';
+
 const Alert = {
   alert(title, message, buttons) {
     switch (buttons.length) {
@@ -22,8 +24,8 @@ const Alert = {
 };
 
 function parseComponent(key, doc, onChangeScreen) {
-  const { text, icon, children, onPress, input } = doc;
-  const props = _.omit(doc, ['text', 'icon', 'children', 'onPress', 'input']);
+  const { text, icon, children, onPress, input, comment } = doc;
+  const props = _.omit(doc, ['text', 'icon', 'children', 'onPress', 'input', 'comment']);
   if (onPress) {
     if (onPress.linkTo) {
       props.onPress = () => onChangeScreen(onPress.linkTo);
@@ -54,16 +56,10 @@ function parseComponent(key, doc, onChangeScreen) {
   const Tag = onPress ? TouchableOpacity : View;
   return (
     <Tag key={key} {...props}>
-      <TouchableOpacity
-        style={{
-          backgroundColor: 'red',
-          width: 10,
-          height: 10,
-          position: 'absolute',
-          right: 0,
-          top: 0,
-        }}
-      />
+      {
+        comment && Tag === View &&
+        <Comment comment={comment} />
+      }
       {!!children && children.map((child, i) => parseComponent(i, child, onChangeScreen))}
     </Tag>
   );

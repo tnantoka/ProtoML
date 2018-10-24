@@ -56,6 +56,7 @@ home:
         backgroundColor: grey
         alignItems: center
         justifyContent: center
+      comment: Show the ad.
       children:
         - text:
             content: Ad
@@ -109,6 +110,9 @@ source:
               <<: *source_button_style
           onPress:
             linkTo: preview
+    - comment: |
+        Write the code.
+        (YAML)
     - input:
         value: 'home:'
         multiline: true
