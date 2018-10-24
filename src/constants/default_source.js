@@ -23,7 +23,7 @@ _home_list_item: &home_list_item
     - style:
       children:
         - text:
-            content: Name
+            content: Prototype Name
         - text:
             content: '2018-11-01'
 _hr: &hr
@@ -38,7 +38,7 @@ home:
         <<: *header_style
       children:
         - text:
-            content: Protoypes
+            content: ProtoML Mobile
     - style:
         flex: 1
       children:
@@ -114,7 +114,13 @@ source:
         Write the code.
         (YAML)
     - input:
-        value: 'home:'
+        value: |
+          home:
+          root: true
+          children:
+            - style:
+                backgroundColor: lightblue
+                flex: 1
         multiline: true
         numberOfLines: 10
         style:
@@ -146,7 +152,5 @@ preview:
         borderColor: lightgrey
         flex: 1
         margin: 10
-      children:
-        - text:
-            content: Preview
+        backgroundColor: lightblue
 `;
