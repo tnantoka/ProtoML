@@ -75,14 +75,15 @@ function parseScreens(doc, onChangeScreen) {
     if (/^_/.test(key)) {
       continue;
     }
-    const { children } = doc[key];
+    let { children } = doc[key];
+    children = children || [];
     const props = _.omit(doc[key], ['children']);
     if (!props.style) {
       props.style = {};
     }
     props.style = { flex: 1, position: 'relative', ...props.style };
     screens[key] = (
-      <View {...props}>{children.map((child, i) => parseComponent(i, child, onChangeScreen))}</View>
+      <View {...props}>{children.map((child, i) => parseComponent(`${key}-${i}`, child, onChangeScreen))}</View>
     );
   }
   return screens;
@@ -103,11 +104,8 @@ export default class YAMLParser {
     } catch (e) {
       this.error = e;
       console.error(e);
-      doc = {};
     }
-
-    // this.screens = { index: <View /> };
-    // return;
+    doc = doc || { home: <View /> };
 
     this.screens = parseScreens(doc, this.onChangeScreen);
     this.root = Object.keys(doc).find(key => doc[key].root);

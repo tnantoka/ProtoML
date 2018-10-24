@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 
 import YAMLParser from '../utils/YAMLParser.js';
+import ErrorBoundary from '../components/ErrorBoundary.js';
 
 export default class Preview extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -62,6 +63,8 @@ export default class Preview extends React.Component {
         <Text style={{ color: 'red' }}>{ this.state.parser.error.toString() }</Text>
       )
     }
-    return this.state.parser.screens[this.state.currentScreen];
+    return (
+      <ErrorBoundary>{this.state.parser.screens[this.state.currentScreen]}</ErrorBoundary>
+    );
   }
 }
