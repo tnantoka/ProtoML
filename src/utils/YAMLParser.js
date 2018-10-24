@@ -15,7 +15,7 @@ const Alert = {
       case 2:
         // eslint-disable-next-line no-restricted-globals
         if (confirm(title)) {
-          buttons[1]();
+          buttons[1].onPress();
         }
         break;
       default:
@@ -30,12 +30,16 @@ function parseComponent(key, doc, onChangeScreen) {
     if (onPress.linkTo) {
       props.onPress = () => onChangeScreen(onPress.linkTo);
     } else if (onPress.alert) {
-      Alert.alert(onPress.alert, null, [{ text: 'OK', onPress: () => {} }]);
+      props.onPress = () => {
+        Alert.alert(onPress.alert, null, [{ text: 'OK', onPress: () => {} }]);
+      };
     } else if (onPress.confirm) {
-      Alert.alert(onPress.confirm.title, null, [
-        { text: 'Cancel', onPress: () => {}, style: 'cancel' },
-        { text: 'OK', onPress: () => onChangeScreen(onPress.confirm.linkTo) },
-      ]);
+      props.onPress = () => {
+        Alert.alert(onPress.confirm.title, null, [
+          { text: 'Cancel', onPress: () => {}, style: 'cancel' },
+          { text: 'OK', onPress: () => onChangeScreen(onPress.confirm.linkTo) },
+        ]);
+      };
     }
   }
   if (icon) {

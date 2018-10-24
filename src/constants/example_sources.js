@@ -60,6 +60,47 @@ example2:
             content: world
   `.trim(),
 
+  Alert: `
+example:
+  root: true
+  children:
+    - onPress:
+        alert: world
+      style:
+        borderWidth: 1
+        borderColor: grey
+      children:
+        - text:
+            content: hello
+  `.trim(),
+
+  Confirm: `
+example:
+  root: true
+  children:
+    - onPress:
+        confirm:
+          title: Are you sure?
+          linkTo: example2
+      style:
+        borderWidth: 1
+        borderColor: grey
+      children:
+        - text:
+            content: hello
+example2:
+  children:
+    - onPress:
+        linkTo: example
+      style:
+        borderWidth: 1
+        borderColor: grey
+      children:
+        - text:
+            content: world
+  `.trim(),
+
+
   Layout: `
 example:
   root: true
