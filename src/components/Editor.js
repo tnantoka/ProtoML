@@ -106,6 +106,7 @@ export default class Editor extends React.Component {
                     height="100%"
                     width="100%"
                     showGutter={false}
+                    fontSize={14}
                   />
                 </CardBody>
               </Card>
