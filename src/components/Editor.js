@@ -57,6 +57,10 @@ export default class Editor extends React.Component {
     window.open('/examples', '_blank');
   };
 
+  openGitHubLink = () => {
+    window.open('https://github.com/tnantoka/protoml', '_blank');
+  };
+
   compress = () => {
     return LZString.compressToEncodedURIComponent(this.state.source);
   };
@@ -87,6 +91,10 @@ export default class Editor extends React.Component {
                   </DropdownItem>
                   <DropdownItem onClick={this.openExamplesLink}>
                     <Icon name="book" /> Examples
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem onClick={this.openGitHubLink}>
+                    <Icon name="github" /> GitHub
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
