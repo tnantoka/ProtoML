@@ -116,11 +116,11 @@ source:
     - input:
         value: |
           home:
-          root: true
-          children:
-            - style:
-                backgroundColor: lightblue
-                flex: 1
+            root: true
+            children:
+              - style:
+                  backgroundColor: lightblue
+                  flex: 1
         multiline: true
         numberOfLines: 10
         style:
